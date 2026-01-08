@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>China Itineraries • AI Travel Buddy</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:rgba(255,255,255,.04);
+      --border:rgba(255,255,255,.10);
+      --text:#eef2ff;
+      --muted:#a9b3c7;
+      --accent:#4f8cff;
+      --radius:16px;
+      --max: 980px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: var(--font);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(79,140,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(34,197,94,.18), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 18px 80px;
+    }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 16px;
+    }
+
+    .brand{
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .btn:hover{ background: rgba(255,255,255,.06); text-decoration:none; }
+
+    h1{
+      margin: 6px 0 6px;
+      font-size:32px;
+      letter-spacing:-.3px;
+    }
+
+    .muted{ color: var(--muted); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card.chengdu{
+      background-image: url('https://content.r9cdn.net/rimg/dimg/a5/6f/7a9dfa5d-city-2124-17ea256c950.jpg?width=1366&height=768&xhint=1555&yhint=1003&crop=true');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.chengdu::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11,18,32,.75);
+      border-radius: var(--radius);
+      z-index: 1;
+    }
+
+    .card.beijing{
+      background-image: url('https://www.tripsavvy.com/thmb/Dfj0Yk97Af8VYlm-TWsGpLDm-H0=/5000x3338/filters:fill(auto,1)/forbidden-city-beijing-8775c18670bd412d9b54daecba137c5c.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.beijing::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11,18,32,.75);
+      border-radius: var(--radius);
+      z-index: 1;
+    }
+
+    .card.shanghai{
+      background-image: url('https://imgcld.yatra.com/ytimages/image/upload/v1487225310/Shanghai_History.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.shanghai::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11,18,32,.75);
+      border-radius: var(--radius);
+      z-index: 1;
+    }
+
+    .card.xian{
+      background-image: url('https://cdn.sanity.io/images/f8lauh0h/production/d3f6ed30a039ff5c0247a2e1e762f2e12de99dea-2048x1449.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.xian::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11,18,32,.75);
+      border-radius: var(--radius);
+      z-index: 1;
+    }
+
+    .card.yangshuo{
+      background-image: url('https://th.bing.com/th/id/R.2d456bf0118417ffdcbe6331c25d81ad?rik=XHbUsaS6KpUNdg&riu=http%3a%2f%2frakkup.com%2fwp-content%2fuploads%2f2018%2f02%2fYanghsuo-Rock-Climbing-Guidebook-13.jpg&ehk=mXSY7eMtCgiT4MGieZ5KtWdMfUkTWKpoC6LtIQXP0yw%3d&risl=&pid=ImgRaw&r=0');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.yangshuo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11,18,32,.75);
+      border-radius: var(--radius);
+      z-index: 1;
+    }
+
+    .card.chengdu > *,
+    .card.beijing > *,
+    .card.shanghai > *,
+    .card.xian > *,
+    .card.yangshuo > *{
+      position: relative;
+      z-index: 2;
+    }
+
+    .card h2{
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .pill{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    details{
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+    }
+
+    ul{
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .card{ min-height: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="top">
+    <div class="brand">AI Travel Buddy ✈️</div>
+    <a class="btn" href="index.html">← Back to Home</a>
+  </div>
+
+  <h1>🇨🇳 China Itinerary Samples</h1>
+  <p class="muted">
+    These sample itineraries show what AI Travel Buddy can generate for Republic Polytechnic students.
+    Use the chatbot at the bottom-right for personalised plans.
+  </p>
+
+  <div class="grid">
+
+    <div class="card chengdu">
+      <div class="pill">🍜 Food • Relaxed</div>
+      <h2>Chengdu (5 Days)</h2>
+      <p class="muted">Best for students who love street food, hotpot, and tea houses.</p>
+      <details>
+        <summary>View sample itinerary</summary>
+        <ul>
+          <li><b>Day 1:</b> Arrival + Jinli Ancient Street food exploration</li>
+          <li><b>Day 2:</b> Panda Base + Sichuan hotpot + food street</li>
+          <li><b>Day 3:</b> Tea house experience + street food night</li>
+          <li><b>Day 4:</b> Shopping streets + café or tea house</li>
+          <li><b>Day 5:</b> Souvenir shopping + free exploration + departure</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card beijing">
+      <div class="pill">🏛️ Culture • History</div>
+      <h2>Beijing (5 Days)</h2>
+      <p class="muted">Best for students interested in landmarks and history.</p>
+      <details>
+        <summary>View sample itinerary</summary>
+        <ul>
+          <li><b>Day 1:</b> Arrival + local food street</li>
+          <li><b>Day 2:</b> Forbidden City + Tiananmen Square</li>
+          <li><b>Day 3:</b> Great Wall day trip</li>
+          <li><b>Day 4:</b> Summer Palace + neighbourhood walk</li>
+          <li><b>Day 5:</b> Souvenir shopping + departure</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card shanghai">
+      <div class="pill">🌆 Modern • Shopping</div>
+      <h2>Shanghai (5 Days)</h2>
+      <p class="muted">Best for students who enjoy city views and shopping.</p>
+      <details>
+        <summary>View sample itinerary</summary>
+        <ul>
+          <li><b>Day 1:</b> Arrival + The Bund walk</li>
+          <li><b>Day 2:</b> Yu Garden + street snacks</li>
+          <li><b>Day 3:</b> City viewpoints + cafés</li>
+          <li><b>Day 4:</b> Nanjing Road shopping + markets</li>
+          <li><b>Day 5:</b> Free exploration + departure</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card xian">
+      <div class="pill">🏯 History • Budget</div>
+      <h2>Xi'an (5 Days)</h2>
+      <p class="muted">Best for students seeking history and budget travel.</p>
+      <details>
+        <summary>View sample itinerary</summary>
+        <ul>
+          <li><b>Day 1:</b> Arrival + Muslim Quarter food street</li>
+          <li><b>Day 2:</b> Terracotta Warriors</li>
+          <li><b>Day 3:</b> Ancient City Wall + Bell & Drum Towers</li>
+          <li><b>Day 4:</b> Markets + street food</li>
+          <li><b>Day 5:</b> Souvenir shopping + departure</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card yangshuo">
+      <div class="pill">🌄 Nature • Photography</div>
+      <h2>Guilin / Yangshuo (5 Days)</h2>
+      <p class="muted">Best for students who enjoy scenery and relaxed travel.</p>
+      <details>
+        <summary>View sample itinerary</summary>
+        <ul>
+          <li><b>Day 1:</b> Arrival + city walk</li>
+          <li><b>Day 2:</b> Li River scenery</li>
+          <li><b>Day 3:</b> Countryside exploration</li>
+          <li><b>Day 4:</b> Photography + relaxation</li>
+          <li><b>Day 5:</b> Souvenir shopping + departure</li>
+        </ul>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ✅ Floating Botpress Chatbot (bottom-right) -->
+<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+    configUrl: "https://files.bpcontent.cloud/2026/01/06/05/20260106051545-8ZP1UCU1.json",
+    position: "bottom-right"
+  });
+</script>
+
+</body>
+</html>
