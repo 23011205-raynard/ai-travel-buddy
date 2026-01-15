@@ -1,12 +1,12 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Verdana', sans-serif;
   margin: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #fffbe6;
+  color: #2a2a2a;
 }
 
 .hero {
-  background: #1e90ff;
+  background: linear-gradient(135deg, #ff9a3c, #ff5f5f);
   color: white;
   padding: 60px 20px;
   text-align: center;
@@ -14,7 +14,7 @@ body {
 
 .hero h1 {
   margin-bottom: 10px;
-  font-size: 40px;
+  font-size: 42px;
 }
 
 .hero p {
@@ -24,16 +24,27 @@ body {
 
 .btn {
   background: white;
-  color: #1e90ff;
+  color: #ff5f5f;
   padding: 12px 20px;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 6px;
+  margin: 5px;
+}
+
+.btn.primary {
+  background: #ff9a3c;
+  color: white;
+}
+
+.btn.secondary {
+  background: #ff5f5f;
+  color: white;
 }
 
 .section {
   padding: 40px 20px;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -47,43 +58,52 @@ body {
 }
 
 .countries li {
-  background: #eee;
+  background: #fff1e6;
   margin: 8px 0;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ffd1b3;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card {
+  background: #fff3e6;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card details {
+  margin-top: 10px;
+}
+
+.card summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.muted {
+  color: #555;
 }
 
 footer {
-  background: #333;
+  background: #ff5f5f;
   color: white;
   text-align: center;
   padding: 15px;
-}
-/* Center the Botpress container */
-#bp-web-widget-container {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 999999 !important;
-  background: rgba(0,0,0,.6) !important;
-  backdrop-filter: blur(6px) !important;
-  border-radius: 20px !important;
-  padding: 0 !important;
-}
-
-/* Large but safe size */
-#bp-web-widget-container iframe {
-  width: 700px !important;
-  height: 700px !important;
-  max-width: 90vw !important;
-  max-height: 90vh !important;
-  border-radius: 16px !important;
-  box-shadow: 0 40px 120px rgba(0,0,0,.7) !important;
-  border: 1px solid rgba(255,255,255,.1) !important;
-}
-
-/* Ensure body doesn't scroll when modal is open */
-body.modal-open {
-  overflow: hidden !important;
+  margin-top: 40px;
 }
