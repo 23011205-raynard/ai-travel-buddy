@@ -4,20 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thailand Itineraries • AI Travel Buddy</title>
-  <link rel="stylesheet" href="thailand-style.css" />
+
+  <style>
+    :root{
+      --bg:#fffbe6; /* light warm background */
+      --card:#fff3e6;
+      --border:rgba(255,150,80,.2);
+      --text:#2a2a2a;
+      --muted:#555;
+      --accent:#ff5f5f;
+      --radius:16px;
+      --max: 980px;
+      --shadow: 0 8px 20px rgba(0,0,0,.15);
+      --font: Verdana, sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 18px 80px;
+    }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 16px;
+    }
+
+    .brand{
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-decoration:none;
+    }
+    .btn:hover{ background: #ff7f7f; }
+
+    h1{
+      margin: 6px 0 6px;
+      font-size:32px;
+      letter-spacing:-.3px;
+    }
+
+    .muted{ color: var(--muted); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card.phuket{
+      background-image: url('https://cdn.pixabay.com/photo/2016/11/29/03/28/beach-1867283_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.bangkok{
+      background-image: url('https://cdn.pixabay.com/photo/2017/05/02/21/19/bangkok-2271354_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.chiangmai{
+      background-image: url('https://cdn.pixabay.com/photo/2018/01/21/12/38/chiang-mai-3090117_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.krabi{
+      background-image: url('https://cdn.pixabay.com/photo/2017/07/21/23/44/railay-beach-2527455_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card.phuket::before,
+    .card.bangkok::before,
+    .card.chiangmai::before,
+    .card.krabi::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.25);
+      border-radius: var(--radius);
+      z-index: 1;
+    }
+
+    .card > *{
+      position: relative;
+      z-index: 2;
+    }
+
+    .card h2{
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .pill{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.3);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    details{
+      border-top: 1px solid rgba(0,0,0,.05);
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+    }
+
+    ul{
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .card{ min-height: auto; }
+    }
+  </style>
 </head>
+
 <body>
 
 <div class="container">
   <div class="top">
-    <h1>🇹🇭 Thailand Sample Itineraries</h1>
-    <a href="index.html" class="btn">← Back to Home</a>
+    <div class="brand">AI Travel Buddy ✈️</div>
+    <a class="btn" href="index.html">← Back to Home</a>
   </div>
 
+  <h1>🇹🇭 Thailand Itinerary Samples</h1>
+  <p class="muted">
+    These sample itineraries show what AI Travel Buddy can generate for students visiting Thailand.
+    Use the chatbot at the bottom-right for personalised plans.
+  </p>
+
   <div class="grid">
+
     <div class="card phuket">
+      <div class="pill">🏝️ Beach • Adventure</div>
       <h2>Phuket (5 Days)</h2>
-      <p class="muted">Beaches, nightlife, and adventure for students.</p>
+      <p class="muted">Best for students who love beaches, nightlife, and adventure.</p>
       <details>
         <summary>View itinerary</summary>
         <ul>
@@ -31,33 +208,51 @@
     </div>
 
     <div class="card bangkok">
+      <div class="pill">🌆 City • Culture</div>
       <h2>Bangkok (4 Days)</h2>
-      <p class="muted">City culture, temples, and street food.</p>
+      <p class="muted">Best for students who enjoy temples, street food, and city culture.</p>
       <details>
         <summary>View itinerary</summary>
         <ul>
           <li><b>Day 1:</b> Arrival + Khao San Road street food</li>
           <li><b>Day 2:</b> Grand Palace + Wat Pho + river cruise</li>
-          <li><b>Day 3:</b> Chatuchak Market + local cafes</li>
+          <li><b>Day 3:</b> Chatuchak Market + cafes</li>
           <li><b>Day 4:</b> Jim Thompson House + departure</li>
         </ul>
       </details>
     </div>
 
     <div class="card chiangmai">
+      <div class="pill">🌿 Nature • Temples</div>
       <h2>Chiang Mai (5 Days)</h2>
-      <p class="muted">Nature, temples, and student-friendly adventures.</p>
+      <p class="muted">Best for students who enjoy nature, temples, and local culture.</p>
       <details>
         <summary>View itinerary</summary>
         <ul>
           <li><b>Day 1:</b> Arrival + Old City temples</li>
           <li><b>Day 2:</b> Doi Suthep + night market</li>
           <li><b>Day 3:</b> Elephant sanctuary visit</li>
-          <li><b>Day 4:</b> Cooking class + local food tour</li>
+          <li><b>Day 4:</b> Thai cooking class + local food tour</li>
           <li><b>Day 5:</b> Free exploration + departure</li>
         </ul>
       </details>
     </div>
+
+    <div class="card krabi">
+      <div class="pill">🏞️ Islands • Scenic</div>
+      <h2>Krabi (4 Days)</h2>
+      <p class="muted">Best for students who enjoy scenic views and relaxing beaches.</p>
+      <details>
+        <summary>View itinerary</summary>
+        <ul>
+          <li><b>Day 1:</b> Arrival + Railay Beach walk</li>
+          <li><b>Day 2:</b> Island hopping + kayaking</li>
+          <li><b>Day 3:</b> Sunset photography + local food</li>
+          <li><b>Day 4:</b> Free exploration + departure</li>
+        </ul>
+      </details>
+    </div>
+
   </div>
 </div>
 
